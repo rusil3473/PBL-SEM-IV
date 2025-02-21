@@ -18,7 +18,8 @@ app.post("/compile", (req, res) => {
 
     fs.writeFileSync(cppFile, code);
 
-    const compileCmd = `g++ ${cppFile} -o ${exeFile} -lgraph -lSDL -lX11 -lXext -lpthread -lm -static-libgcc -static-libstdc++ && chmod +x ${exeFile}`;
+    const compileCmd = `g++ ${cppFile} -o ${exeFile} -static -static-libgcc -static-libstdc++ -lbgi -lgdi32 -lcomdlg32 -luuid -loleaut32 -lole32
+`;
 
     exec(compileCmd, (compileErr, stdout, stderr) => {
         if (compileErr) {
