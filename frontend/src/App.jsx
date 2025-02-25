@@ -20,8 +20,9 @@ const App = () => {
 
       if (response.data.errors) {
         setOutput(response.data.errors);
-        console.log(response.data.errors);
+        console.log(JSON.stringify(response.data.errors, null, 2));
       } else {
+        console.log("Response Data:", response.data);
         setOutput(response.data.message);
         if (response.data.downloadLink) {
           setDownloadLink("http://localhost:3000/download");
@@ -47,7 +48,7 @@ const App = () => {
         />
         <button
           onClick={handleCompile}
-          className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg cursor-pointer-"
+          className="mt-4 w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 rounded-lg cursor-pointer"
         >
           Compile
         </button>
